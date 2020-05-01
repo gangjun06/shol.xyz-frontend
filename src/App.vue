@@ -2,14 +2,17 @@
   <div id="app" class="bg-blue-100">
     <NavBar />
     <router-view />
+    <Footer />
   </div>
 </template>
 
 <script>
 import NavBar from './components/Navbar'
+import Footer from './components/Footer'
 export default {
   components: {
-    NavBar
+    NavBar,
+    Footer
   }
 }
 </script>
@@ -21,6 +24,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  height: 100vh;
 }
 </style>

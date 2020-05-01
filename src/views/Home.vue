@@ -38,7 +38,11 @@
       </div>
     </header>
     <section class="pt-8 h-64">
-      <div class="text-2xl">Are you a developer?</div>
+      <div class="text-3xl">About Services</div>
+      <div>I'll fill this section tomorrow</div>
+    </section>
+    <section class="pt-8 h-64">
+      <div class="text-3xl">Are you a developer?</div>
       <div>You can use shol.xyz api for free!</div>
       <div class="flex justify-center mt-4">
         <a
