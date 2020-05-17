@@ -39,7 +39,7 @@
     </header>
     <section class="pt-8 h-64">
       <div class="text-3xl">About Services</div>
-      <div>I'll fill this section tomorrow</div>
+      <div>JUST URL short service!</div>
     </section>
     <section class="pt-8 h-64">
       <div class="text-3xl">Are you a developer?</div>
