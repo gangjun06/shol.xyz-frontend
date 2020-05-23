@@ -6,6 +6,7 @@ import './assets/styles/index.css'
 import VueClipboard from 'vue-clipboard2'
 import 'v-msgx/dist/msg.min.css'
 import Msg from 'v-msgx'
+import 'material-icons/iconfont/material-icons.scss'
 
 VueClipboard.config.autoSetContainer = true // add this line
 Vue.use(VueClipboard)

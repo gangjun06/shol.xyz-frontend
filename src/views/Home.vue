@@ -1,12 +1,15 @@
 <template>
-  <div>
-    <header class="bg-gray-800 text-white">
-      <div class="pt-16 text-xl">
-        Easy to use with short URL
+  <div id="bg" :style="bgLink">
+    <div class="position text-white">
+      <div class="text-5xl font-bold">shol.xyz</div>
+      <div class="text-2xl mb-2">Create short domains easily!</div>
+      <div class="flex mb-8">
+        <a href="" class="mr-4">API Docs</a>
+        <a href="https://github.com/gangjun06/shol.xyz-backend">Github</a>
       </div>
-      <div class="flex justify-center pt-8">
+      <div class="flex justify-between">
         <input
-          class="appearance-none block w-1/3 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          class="w-full bg-opacity-0 bg-white placeholder-white appearance-none block w-1/3 text-white border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:border-gray-500"
           type="text"
           placeholder="Input longurl"
           v-model="longurl"
@@ -19,39 +22,13 @@
           Shorten
         </button>
       </div>
-      <div class="mt-2 text-sm">
-        By clicking SHORTTEN, you are agreeing to Privacy Policy
-      </div>
-      <div class="flex justify-center">
-        <div
-          v-if="shorturl"
-          class="mt-8 w-64 rounded border-solid border-2 border-white flex justify-between flex-row px-4 py-2"
-        >
-          <a :href="shorturl" class="hover:text-gray-400">{{ shorturl }}</a>
-          <button
-            class="hover:text-gray-400 cursor-pointer"
-            v-clipboard:copy="shorturl"
-          >
-            copy
-          </button>
-        </div>
-      </div>
-    </header>
-    <section class="pt-8 h-64">
-      <div class="text-3xl">About Services</div>
-      <div>JUST URL short service!</div>
-    </section>
-    <section class="pt-8 h-64">
-      <div class="text-3xl">Are you a developer?</div>
-      <div>You can use shol.xyz api for free!</div>
-      <div class="flex justify-center mt-4">
-        <a
-          href="/docs"
-          class="w-32 block rounded border-solid border-2 border-gray-800 px-4 py-2"
-          >Read Docs</a
+
+      <div class="mt-32">
+        <a href="https://gangjun.dev"
+          >&copy;{{ new Date().getFullYear() }}. Gangjun</a
         >
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -60,9 +37,35 @@ import Axios from 'axios'
 export default {
   name: 'Home',
   data: () => ({
-    longurl: '',
-    shorturl: ''
+    longurl: ''
   }),
+  computed: {
+    bgLink() {
+      const imglist = [
+        '305',
+        '319',
+        '613',
+        '566',
+        '96',
+        '282',
+        '279',
+        '1064',
+        '60',
+        '239',
+        '170',
+        '112',
+        '387',
+        '715',
+        '187',
+        '879',
+        '982'
+      ]
+      const randomURL = imglist[Math.floor(Math.random() * imglist.length)]
+      return {
+        backgroundImage: `url('https://i.picsum.photos/id/${randomURL}/${window.innerWidth}/${window.innerHeight}.jpg')`
+      }
+    }
+  },
   methods: {
     getShort() {
       const trimurl = this.longurl.trim()
@@ -79,8 +82,11 @@ export default {
             this.$Msg.error('Error while generating url')
             return
           }
-          this.shorturl = 'https://shol.xyz/' + result.data.short
-          this.$Msg.success('Successfully generated url')
+          const shorturl = 'https://shol.xyz/' + result.data.short
+          this.$Msg.success(
+            'Successfully generated url.\nUrl has been saved to the clipboard'
+          )
+          this.$copyText(shorturl)
         })
         .catch(e => {
           this.$Msg.error('Server connetion faild')
@@ -91,7 +97,14 @@ export default {
 </script>
 
 <style>
-header {
-  height: 40vh;
+#bg {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+}
+.position {
+  position: absolute;
+  bottom: 10%;
+  left: 6%;
 }
 </style>

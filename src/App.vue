@@ -1,20 +1,9 @@
 <template>
-  <div id="app" class="bg-blue-100">
-    <NavBar />
-    <router-view />
-    <Footer />
-  </div>
+  <router-view />
 </template>
 
 <script>
-import NavBar from './components/Navbar'
-import Footer from './components/Footer'
-export default {
-  components: {
-    NavBar,
-    Footer
-  }
-}
+export default {}
 </script>
 
 <style>
